@@ -1,17 +1,18 @@
 import { Component } from "react";
+import Greeting from "../../components/Home/Greeting";
 
 class HomePage extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return(
-            <div>
-                <h1>Hello from the Home Page</h1>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Greeting name="Deshan(Called From Prop)"/>
+      </div>
+    );
+  }
 }
 
 export default HomePage;
