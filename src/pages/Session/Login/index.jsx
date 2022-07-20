@@ -3,8 +3,8 @@ import { withStyles } from "@mui/styles";
 import React, { Component } from "react";
 import { styleSheet } from "./Style";
 import TextField from "@mui/material/TextField";
-import GDSEButton from "../../components/Common/Button";
-import GDSESnackBar from "../../components/Common/SnackBar";
+import GDSEButton from "../../../components/Common/Button";
+import GDSESnackBar from "../../../components/Common/SnackBar";
 
 class Login extends Component {
   constructor(props) {
