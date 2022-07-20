@@ -8,6 +8,23 @@ import GDSEButton from "../../components/Common/Button";
 class Login extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      userName: "admin",
+      pw: "admin",
+      formData: {
+        user_name: "",
+        password: "",
+      },
+    };
+  }
+
+  checkValidity() {
+    console.log("Login button clicked!");
+    console.log("User name: " + this.state.userName);
+    console.log("Password: " + this.state.pw);
+
+    console.log(this.state.formData);
   }
 
   render() {
@@ -23,16 +40,34 @@ class Login extends Component {
               id="outlined-basic"
               label="User name"
               variant="outlined"
+              onChange={(e) => {
+                console.log(e.target.value);
+                let formData = this.state.formData;
+                formData.user_name = e.target.value;
+                this.setState({ formData });
+              }}
             />
             <TextField
               id="outlined-basic"
               type="password"
               label="Password"
               variant="outlined"
+              onChange={(e) => {
+                console.log(e.target.value);
+                let formData = this.state.formData;
+                formData.password = e.target.value;
+                this.setState({ formData });
+              }}
             />
           </div>
           <div className={classes.btn__container}>
-            <GDSEButton variant="contained" label="Login" />
+            <GDSEButton
+              variant="contained"
+              label="Login"
+              onClick={() => {
+                this.checkValidity();
+              }}
+            />
           </div>
         </div>
       </div>
