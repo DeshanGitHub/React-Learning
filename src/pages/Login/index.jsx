@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { styleSheet } from "./Style";
 import TextField from "@mui/material/TextField";
 import GDSEButton from "../../components/Common/Button";
+import GDSESnackBar from "../../components/Common/SnackBar";
 
 class Login extends Component {
   constructor(props) {
@@ -16,6 +17,11 @@ class Login extends Component {
         user_name: "",
         password: "",
       },
+
+      //for snackbar props
+      open: false,
+      message: "",
+      severity: "",
     };
   }
 
@@ -31,8 +37,18 @@ class Login extends Component {
       formData.password === this.state.pw
     ) {
       console.log("credential matched!");
+      this.setState({
+        open: true,
+        message: "User credential matching sucess!",
+        severity: "success",
+      });
     } else {
       console.log("credential didn't matche!");
+      this.setState({
+        open: true,
+        message: "User credential not matching!",
+        severity: "error",
+      });
     }
   }
 
@@ -79,6 +95,17 @@ class Login extends Component {
             />
           </div>
         </div>
+
+        <GDSESnackBar
+          open={this.state.open}
+          onClose={() => {
+            this.setState({ open: false });
+          }}
+          message={this.state.message}
+          autoHideDuration={3000}
+          severity={this.state.severity}
+          variant="filled"
+        />
       </div>
     );
   }
