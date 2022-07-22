@@ -26,6 +26,25 @@ class Posts extends Component {
     };
   }
 
+  async loadData() {
+    let res = (await PostService.fetchPosts());
+    if (res.status === 200) {
+      console.log("res: " + JSON.stringify(res.data));
+      // console.log("res: " + res.data)
+    } else {
+      console.log("fetching error: " + res);
+    }
+  }
+
+  componentDidMount() {
+    console.log("Post Screen Mounted!");
+    this.loadData();
+  }
+
+  // componentWillUnmount() {
+  //     console.log("Post Scren Unmounted!!")
+  // }
+
   handleSubmit = async () => {
     console.log("save button clicked!!");
     console.log(this.state.formData);

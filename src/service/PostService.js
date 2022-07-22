@@ -16,5 +16,19 @@ class PostService {
     });
     return await promise;
   };
+
+  fetchPosts = async () => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("posts")
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 export default new PostService();
