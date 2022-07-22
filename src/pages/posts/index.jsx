@@ -11,6 +11,7 @@ import PostService from "../../service/PostService";
 import GDSESnackBar from "../../components/Common/SnackBar";
 import { DataGrid, trTR } from "@mui/x-data-grid";
 import BasicPostTable from "../../pages/posts/Table/index";
+import GDSEDataTable from "../../components/Common/Table";
 
 class Posts extends Component {
   constructor(props) {
@@ -42,6 +43,31 @@ class Posts extends Component {
        ],*/
       data: [],
       loaded: false,
+
+      //for data table
+      columns: [
+        {
+          field: "id",
+          headerName: "Post Id",
+          width: 70,
+        },
+        {
+          field: "userId",
+          headerName: "User Id",
+          width: 130,
+        },
+        {
+          field: "title",
+          headerName: "Title",
+          width: 500,
+          sortable: false,
+        },
+        {
+          field: "body",
+          headerName: "Body",
+          width: 620,
+        },
+      ],
     };
   }
 
@@ -49,9 +75,9 @@ class Posts extends Component {
     let res = await PostService.fetchPosts();
     if (res.status === 200) {
       this.setState({
-          loaded: true,
-          data: res.data
-      })
+        loaded: true,
+        data: res.data,
+      });
       console.log("res: " + JSON.stringify(res.data));
     }
   }
@@ -186,12 +212,15 @@ class Posts extends Component {
         {/* created loaded variable in the state. inside the loadData method if only data loaded from the API,
                                 set loaded variable true. below table is render only loaded == true */}
         {this.state.loaded && (
-          <Grid
-            container
-            spacing={0.5}
-            style={{ height: 400, width: "100%", marginTop: "50px" }}
-          >
-            <BasicPostTable data={this.state.data} />
+           <Grid container style={{ height: 400, width: '100%', marginTop: '50px' }}>
+           {/* <BasicPostTable data={this.state.data} /> */}
+           <GDSEDataTable
+               columns={this.state.columns}
+               rows={this.state.data}
+               rowsPerPageOptions={5}
+               pageSize={5}
+               // checkboxSelection={true}
+           />
           </Grid>
         )}
 
