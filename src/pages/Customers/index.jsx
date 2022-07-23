@@ -19,6 +19,8 @@ class Customer extends Component {
       alert: false,
       message: "",
       severity: "",
+
+      data: [],
     };
   }
 
@@ -31,6 +33,21 @@ class Customer extends Component {
         salary: "",
       },
     });
+  };
+
+  loadData = async () => {
+    let res = await CustomerService.fetchCustomer();
+
+    if (res.status === 200) {
+      //print getted data on console
+      console.log(res);
+
+      this.setState({
+        data: res.data.data,
+      });
+    } else {
+      console.log("Deshan Error");
+    }
   };
 
   submitCustomer = async () => {
@@ -54,6 +71,10 @@ class Customer extends Component {
       });
     }
   };
+
+  componentDidMount() {
+    this.loadData();
+  }
 
   render() {
     return (
