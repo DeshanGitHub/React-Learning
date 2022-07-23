@@ -24,6 +24,14 @@ class Customer extends Component {
     };
   }
 
+  // React Map function example
+
+  exampleForMap = () => {
+    this.state.data.map((value) => {
+      console.log(value);
+    });
+  };
+
   clearFields = () => {
     this.setState({
       formData: {
@@ -48,6 +56,10 @@ class Customer extends Component {
     } else {
       console.log("Deshan Error");
     }
+
+    console.log(this.state.data); // print customers array
+
+    this.exampleForMap();
   };
 
   submitCustomer = async () => {
