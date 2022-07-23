@@ -27,8 +27,9 @@ class Customer extends Component {
   // React Map function example
 
   exampleForMap = () => {
-    this.state.data.map((value) => {
+    this.state.data.map((value, index) => {
       console.log(value);
+      console.log(index);
     });
   };
 
