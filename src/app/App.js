@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import FlexBoxLayout from "../pages/Layouts/FlexBox";
 import GridLayout from "../pages/Layouts/Grid";
 import Posts from "../../src/pages/posts";
+import Customer from "../pages/Customers";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="flex-layout" element={<FlexBoxLayout />} />
       <Route path="grid-layout" element={<GridLayout />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="customer-manage" element={<Customer />} />
     </Routes>
   );
 }

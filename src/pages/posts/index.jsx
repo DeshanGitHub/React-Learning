@@ -73,12 +73,13 @@ class Posts extends Component {
 
   async loadData() {
     let res = await PostService.fetchPosts();
+    console.log("row response: " + JSON.stringify(res));
     if (res.status === 200) {
       this.setState({
         loaded: true,
         data: res.data,
       });
-      console.log("res: " + JSON.stringify(res.data));
+      //console.log("res: " + JSON.stringify(res.data));
     }
   }
 
@@ -212,15 +213,18 @@ class Posts extends Component {
         {/* created loaded variable in the state. inside the loadData method if only data loaded from the API,
                                 set loaded variable true. below table is render only loaded == true */}
         {this.state.loaded && (
-           <Grid container style={{ height: 400, width: '100%', marginTop: '50px' }}>
-           {/* <BasicPostTable data={this.state.data} /> */}
-           <GDSEDataTable
-               columns={this.state.columns}
-               rows={this.state.data}
-               rowsPerPageOptions={5}
-               pageSize={5}
-               // checkboxSelection={true}
-           />
+          <Grid
+            container
+            style={{ height: 400, width: "100%", marginTop: "50px" }}
+          >
+            {/* <BasicPostTable data={this.state.data} /> */}
+            <GDSEDataTable
+              columns={this.state.columns}
+              rows={this.state.data}
+              rowsPerPageOptions={5}
+              pageSize={5}
+              // checkboxSelection={true}
+            />
           </Grid>
         )}
 

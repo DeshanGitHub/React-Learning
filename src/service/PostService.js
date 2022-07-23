@@ -17,6 +17,8 @@ class PostService {
     return await promise;
   };
 
+  postMethod = (resolve, reject) => {};
+
   fetchPosts = async () => {
     const promise = new Promise((resolve, reject) => {
       axios
